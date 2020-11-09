@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        function Person(name,age){
+            //属性
+            this.name=name;
+            this.age=age;
+            this.eat = function () {
+                console.log("haha");
+            };
+        }
+
+        Person.prototype.sex = "男";
+        Person.prototype.sayHi=function () {
+            console.log("nihaoa");
+        };
+        //实例化对象，并初始化
+        var per = new Person("巫毅",20);
+        per.sayHi();
+        
+        console.dir(per);//实例对象结构
+        console.dir(Person);//构造函数结构
+        
+        console.log(per.__proto__==Person.prototype);
+    </script>
+</head>
+<body>
+
+</body>
+</html>

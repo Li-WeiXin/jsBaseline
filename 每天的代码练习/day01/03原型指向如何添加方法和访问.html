@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script>
+    //人的构造函数
+    function Person(age) {
+        this.age=age;
+
+    }
+    Person.prototype.eat=function () {
+        console.log("人正在吃东西");
+    }
+    function Student(sex) {
+        this.sex=sex;
+    }
+
+    Student.prototype.sayHi=function () {
+        console.log("hah");
+    };
+    //改变了原型对象的指向
+    Student.prototype=new Person(10);
+    var stu=new Student("男");
+    stu.eat();
+    stu.sayHi();
+
+
+
+
+
+
+
+</script>
+<body>
+
+</body>
+</html>
