@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style type="text/css">
+    #dv{
+        width: 300px;
+        height:200px;
+        position: absolute;
+        left:300px;
+        top:100px;
+    }
+    .strengthLv0 {
+        height: 6px;
+        width: 120px;
+        border: 1px solid #ccc;
+        padding: 2px;
+    }
+
+    .strengthLv1 {
+        background: red;
+        height: 6px;
+        width: 40px;
+        border: 1px solid #ccc;
+        padding: 2px;
+    }
+
+    .strengthLv2 {
+        background: orange;
+        height: 6px;
+        width: 80px;
+        border: 1px solid #ccc;
+        padding: 2px;
+    }
+
+    .strengthLv3 {
+        background: green;
+        height: 6px;
+        width: 120px;
+        border: 1px solid #ccc;
+        padding: 2px;
+    }
+</style>
+<body>
+<div id="dv">
+    <label for="pwd">密码</label>
+    <input type="text" id="pwd" maxlength="16">
+    <div>
+        <em>密度强度：</em>
+        <em id="strength"></em>
+        <div id="strengthLevel" class="strengthLv0"></div>
+    </div>
+</div>
+<script src="common.js"></script>
+<script>
+    //获取文本框注册键盘抬起事件
+    my$("pwd").onkeyup =function () {
+        if (this.value.length>=6){
+            var lvl=getLvL(this.value);
+            my$("strengthLevel").className="strengthLv"+lvl;
+        }else{
+            my$("strengthLevel").className="strengthLv0";
+        }
+        my$("strengthLevel").className="strengthLv0";
+    };
+
+    function getLvL(pwd) {
+        var lvl=0;
+        if (/[0-9]/.test(pwd)){
+            lvl++;
+        }
+        if(/[a-zA-Z]/.test(pwd)){
+            lvl++;
+        }
+        if(/^[0-9a-zA-Z_]/.test(pwd)){
+            lvl++;
+        }
+        return lvl;
+    }
+</script>
+
+</body>
+</html>
