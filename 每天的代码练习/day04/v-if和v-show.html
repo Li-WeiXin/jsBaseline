@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Documnet</title>
+    <script src="./lib/vue-2.4.0.js">
+    </script>
+
+</head>
+<body>
+
+<div id="app">
+    <input type="button" value="toggle" @click="flag=!flag">
+    <h3 v-if="flag">这是用v-if控制的元素</h3>
+    <h3 v-show="flag">这是用v-show控制的元素</h3>
+</div>
+
+<script>
+    var vm= new Vue({
+        el:'#app',
+        data:{
+            flag:false
+        },
+        methods:{
+            // toggle(){
+            //     this.flag=!this.flag
+            // }
+        }
+    })
+
+</script>
+
+</body>
+</html>

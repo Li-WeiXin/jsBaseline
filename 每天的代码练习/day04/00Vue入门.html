@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Documnet</title>
+    <style>
+        [v-cloak]{
+            display: none;
+        }
+    </style>
+    <script src="./lib/vue-2.4.0.js"></script>
+</head>
+<body>
+    <div id="app">
+        <p v-cloak>----{{ msg }}=====</p>
+        <h4 v-text="msg">================</h4>
+
+
+    <div>{{msg2}}</div>
+    <div v-text="msg2">111</div>
+    <div v-html="msg2">11111</div>
+
+
+        <input type="button" value="按钮" @click="show">
+    </div>
+
+<script>
+    var vm = new Vue({
+        el:'#app',//当前我们new的这个vm实例，要控制页面上的那个区域；
+        data:{
+            msg:'欢迎学习Vue',
+            msg2: '<h1>哈哈，我是一个大大的H1， 我大，我骄傲</h1>',
+            mytitle:'这是一个自己定义的title'
+        },
+        methods:{ //这个methods属性中定义了当前Vue实例中所有可用的方法;
+            show:function () {
+                alert('Hello')
+            }
+        }
+    })
+</script>
+
+
+</body>
+</html>
