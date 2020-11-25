@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<!--suppress ALL, JSAnnotator -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    class Person{
+        constructor(name,age){
+            this.name = name;
+            this.age = age;
+        }
+        showName(){
+            console.log('调用父类的方法');
+            console.log(this.name,this.age);
+        }
+    }
+    let person = new Person('kobe',39);
+
+    class StarPerson extends Person{
+        constructor(name,age,salary){
+            super(name,age);
+            this.salary = salary;
+        }
+        showName(){
+            console.log('调用父类的方法');
+            console.log(this.name,this.age,this.salary);
+        }
+    }
+    let p1 = new StarPerson('wade',36,1000000);
+    console.log(p1);
+    p1.showName();
+
+
+
+
+
+
+</script>
+</body>
+</html>
