@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>二叉搜索树</title>
+</head>
+<body>
+<script>
+    function BinarySearchTree() {
+        function Node(key) {
+            this.key = key
+            this.left = null
+            this.right = null
+        }
+
+        this.root = null
+
+        BinarySearchTree.prototype.insert = function (key) {
+            var newNode = new Node(key)
+            if (this.Node===null){
+                this.root = newNode
+            }else{
+                this.insertNode(this.root,newNode)
+            }
+        };
+        BinarySearchTree.prototype.insertNode = function (node,newNode) {
+            if (newNode.left < node.key){
+                if(node.left===null){
+                    node.left = newNode
+                } else {
+                    this.insertNode(node.left,newNode)
+                }
+            }else{
+                if(node.right ===null){
+                    node.right = newNode
+                } else {
+                    this.insertNode(node.right,newNode)
+                }
+            }
+        }
+
+        //获取最大值和最小值
+        BinarySearchTree.prototype.min = function () {
+            var node = this.root;
+            var key = null
+
+            while(node.left !==null){
+                key = node.key
+                node = node.left
+            }
+            return key
+        }
+
+        BinarySearchTree.prototype.max = function () {
+            var node = this.root
+            var key = null;
+            while (node.right !==null){
+                key = node.key
+                node = node.right;
+            }
+            return key
+        }
+
+        // BinarySearchTree.prototype.search = function (key) {
+        //     var node = this.root
+        //     while(node!==null){
+        //         if(key<node.key){
+        //             node = node.left
+        //         } else if (key>node.key){
+        //             node = node.right
+        //         } else {
+        //             return true
+        //         }
+        //     }
+        //     return false
+        // }
+            //搜查
+            BinarySearchTree.prototype.search = function (key){
+                return this.searchNode(this.root,key)
+            }
+
+            BinarySearchTree.prototype.searchNode = function (node,key) {
+                if (node ===null){
+                    return false
+                }
+                if (node.key>key){
+                    return rhis.searchNode(node.left,key)
+                }else if (node.key<key) {
+                    return this.searchNode(node.right,key)
+                }else{
+                    return true
+                }
+            }
+
+            //遍历方法
+        BinarySearchTree.prototype.preOrderTraversal = function (handler) {
+            this.preOrderTraversalNode(this.root,handler)
+        }
+
+        BinarySearchTree.prototype.preOrderTraversalNode = function (node,handler) {
+            if(node!==null){
+                handler(node.key)
+                this.preOrderTraversalNode(node.left,handler)
+                this.preOrderTraversalNode(node.right,handler)
+            }
+        }
+        //中序遍历
+        BinarySearchTree.prototype.inOrderTraversal = function (handler) {
+            this.inOrderTraversalNode(this.root,handler)
+        };
+
+        BinarySearchTree.prototype.inOrderTraversalNode = function (node,handler) {
+            if(node !==null){
+                this.inOrderTraversalNode(node.left,handler)
+                handler(node.key)
+                this.inOrderTraversalNode(node.right,handler)
+            }
+        }
+
+        //后序遍历
+        BinarySearchTree.prototype.postOrderTraversal = function (handler) {
+            this.postOrderTraversalNode(this.root,handler)
+        }
+
+        BinarySearchTree.prototype.postOrderTraversalNode = function (node,handler) {
+            if(node!==null){
+                this.preOrderTraversalNode(node.left,handler)
+                this.preOrderTraversalNode(node.right,handler)
+                handler(node.key)
+            }
+        }
+    }
+</script>
+</body>
+</html>
